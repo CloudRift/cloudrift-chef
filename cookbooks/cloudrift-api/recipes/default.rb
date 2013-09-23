@@ -2,9 +2,9 @@
 # Cookbook Name:: cloudrift-api
 # Recipe:: default
 
-execute "create-repo-path" do
-	command "mkdir -p /opt/cloudrift"
-	ignore_failure true
+directory "/opt/cloudrift" do
+	recursive true
+	action :create
 end
 
 git "/opt/cloudrift" do
