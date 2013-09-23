@@ -19,4 +19,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       ]
     end
   end
+
+  config.vm.define :cloudrift_db do |cloudrift_db|
+    cloudrift_db.vm.hostname = "db-01"
+
+    cloudrift_db.vm.provision :chef_solo do |chef|
+      chef.cookbooks_path = "cookbooks"
+      chef.roles_path = "roles"
+      chef.run_list = [
+        "role[db]"
+      ]
+    end
+  end
 end
