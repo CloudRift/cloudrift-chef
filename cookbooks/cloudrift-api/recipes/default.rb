@@ -7,8 +7,10 @@ execute "create-repo-path" do
 	ignore_failure true
 end
 
-execute "clone-api-repo" do
-	command "git clone https://github.com/CloudRift/Rift.git /opt/cloudrift"
+git "/opt/cloudrift" do
+	repository "https://github.com/CloudRift/Rift.git"
+	reference "master"
+	action :sync
 end
 
 execute "pip-install-deps" do
